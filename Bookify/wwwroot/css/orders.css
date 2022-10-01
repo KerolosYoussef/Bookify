@@ -1,0 +1,45 @@
+﻿.panel-wrap{
+    margin-bottom: 25px;
+    border:1px solid #ddd;
+}
+.panel .panel-header{
+    background: #F2F4F5;
+    padding: 20px;
+    color: #000;
+}
+.panel .panel-header h4{
+    padding: 0 15px;
+    margin: 0;
+    font-family: Rubik, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.panel-body{
+    padding: 20px;
+}
+.panel-body .empty-message{
+    text-align: center;
+}
+#order_table{
+    text-align: center;
+    vertical-align: middle;
+}
+.pagination-body{
+    display: inherit;
+    margin-left:25px
+}
+.pagination a{
+    cursor: pointer;
+}
+.Success{
+    color: #fff;
+    background-color: #28a745;
+}
+.Pending{
+    color: #212529;
+    background-color: #ffc107;
+}
+.Cancelled{
+    color: #fff;
+    background-color: #dc3545;
+}

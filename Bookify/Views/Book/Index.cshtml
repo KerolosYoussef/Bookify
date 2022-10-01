@@ -1,0 +1,76 @@
+﻿@using Bookify.Extensions
+@using System.Text.Json
+@using Bookify.Dtos
+@model BookDto
+@{
+    ViewData["Title"] = "Book";
+	var photoPath = MyHttpContext.AppBaseUrl + "/img/";
+	var book = JsonSerializer.Serialize<BookDto>(@Model);
+}
+@section Styles
+{
+	<link rel="stylesheet" href="~/css/book.css" asp-append-version="true" />
+}
+<div style="background: #fff;height: 100px"></div>
+<div class="container">
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row">
+				<div class="preview col-md-6">
+						
+					<div class="preview-pic tab-content">
+						<div class="tab-pane active" id="pic-1"><img src="@photoPath@Model.ImagePath" /></div>
+					</div>
+				</div>
+				<div class="details col-md-6">
+					<h3 class="product-title">@Model.Title</h3>
+					<div class="rating">
+						@foreach (var genre in Model.Genres)
+						{
+							<span class="badge bg-dark">@genre.Name</span>
+						}
+					</div>
+					@* <div class="rating"> *@
+					@* 	<div class="stars"> *@
+					@* 		<span class="fa fa-star checked"></span> *@
+					@* 		<span class="fa fa-star checked"></span> *@
+					@* 		<span class="fa fa-star checked"></span> *@
+					@* 		<span class="fa fa-star"></span> *@
+					@* 		<span class="fa fa-star"></span> *@
+					@* 	</div> *@
+					@* 	<span class="review-no">41 reviews</span> *@
+					@* </div> *@
+					<p class="product-description">@Model.Description</p>
+					<h4 class="price">current price: <span>$@Model.Price</span></h4>
+					<div class="action">
+						<div class="spinner">
+						</div>
+						<div class="col-lg-4 mb-2">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+										<span class="fa fa-minus"></span>
+									</button>
+								</span>
+								<input type="text" id="quantity" name="quantity" class="form-control input-number ms-1 me-1" value="1" min="1" max="100">
+								<span class="input-group-btn">
+									<button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+										<span class="fa fa-plus"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+						<button class="add-to-cart btn btn-default" data-book="@book" type="button">
+							add to cart
+						</button>
+						<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@section Scripts
+{
+	<script src="~/js/book.js"></script>
+}

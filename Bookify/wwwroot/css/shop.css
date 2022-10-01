@@ -1,0 +1,47 @@
+﻿.book-btn-group {
+    width: 100%;
+}
+.book-btn {
+    width: 30%;
+    height: 40px;
+}
+.image :hover {
+    opacity: 1;
+}
+.image :hover button {
+    transform: none;
+    opacity: 1;
+}
+.img-fluid{
+    height: 450px !important;
+    width: 100% !important;
+}
+.hover-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.hover-overlay button {
+    z-index: 1000;
+    transition: all 0.5s;
+}
+.hover-overlay button:first-of-type {
+    transform: translateX(-20px);
+}
+.hover-overlay button:last-of-type {
+    transform: translateX(20px);
+}
+.pagination-body{
+    display: inherit;
+}
+.pagination a{
+    cursor: pointer;
+}
+.genre-link{
+    cursor: pointer;
+}

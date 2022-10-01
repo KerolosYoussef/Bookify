@@ -1,0 +1,9 @@
+﻿.input-image{
+    display: none;
+    width: 40px;
+    height: 40px;
+    clip-path: circle();
+    position: absolute;
+    top: 35px;
+    right: 15px;
+}

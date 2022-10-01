@@ -1,0 +1,87 @@
+﻿@using Bookify.Extensions
+@using System.Text.Json
+@using Bookify.Dtos
+@model IEnumerable<BookDto>
+@{
+    ViewData["Title"] = "Bookify";
+    var photoPath = MyHttpContext.AppBaseUrl + "/img/";
+}
+<!-- Background image -->
+<div
+    id="intro-example"
+    class="p-5 text-center bg-image"
+    style="background-image: url('https://localhost:44359/img/library.jpg');"
+>
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+                <h1 class="mb-3">Find your Perfect Book</h1>
+                <h5 class="mb-4">& Keep Reading</h5>
+                <a
+                    class="btn btn-outline-light btn-lg m-2"
+                    asp-action="Index"
+                    asp-controller="Shop"
+                    role="button"
+                    rel="nofollow"
+                    target="_blank"
+                >Shop now
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Background image -->
+<!-- Genres -->
+
+<section style="background-color: #eee;">
+  <div class="text-center container py-5">
+    <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
+    
+  <div class="row">
+      @foreach (var book in @Model)
+    {
+        <div class="col-lg-3 col-md-12 mb-4">
+                <div class="card">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                         data-mdb-ripple-color="light">
+                        <span class="badge bg-primary m-1" style="position: absolute;border-radius: 20px">$@book.Price</span>
+                        <img src="@photoPath@book.ImagePath"
+                             class="w-100"
+                             style="height: 350px"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    @foreach (var genre in book.Genres)
+                                    {
+                                        <span class="badge bg-dark m-1">@genre.Name</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body" >
+                        <a href="" class="text-reset">
+                            <p class="card-title mb-3" style="text-align: left;font-size: 20px; font-weight: bold; height: 50px;width:275px;line-height: 25px">@book.Title</p>
+                        </a>
+                        <h6 class="text-start text-muted">@book.Author</h6>  
+                        @{ var bookData = JsonSerializer.Serialize<BookDto>(book); }
+
+                        <button
+                            class="add-to-cart btn btn-outline-primary mt-1"
+                            data-book="@bookData"
+                        >
+                            <i class="fa fa-shopping-cart"></i> Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+    }
+      </div>
+  </div>
+</section>
+
+<!-- Genres -->
+

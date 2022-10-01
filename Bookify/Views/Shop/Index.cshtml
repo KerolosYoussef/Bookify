@@ -1,0 +1,112 @@
+﻿@model ShopIndexViewModel
+@{
+    ViewData["Title"] = "Shop";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
+}
+<div style="background: #fff;height: 150px"></div>
+<section class="padding-y">
+<div class="container">
+
+<div class="row">
+	<aside class="col-lg-3">
+
+<button class="btn btn-outline-secondary mb-3 w-100  d-lg-none" data-bs-toggle="collapse" data-bs-target="#aside_filter">Show filter</button>
+
+<!-- ===== Card for sidebar filter ===== -->
+<div id="aside_filter" class="collapse card d-lg-block mb-5">
+
+  <article class="filter-group">
+    <header class="card-header filter-header">
+      <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1" aria-expanded="true">
+        <i class="icon-control fa fa-chevron-down"></i>   Genre 
+      </a>
+    </header>
+    <div class="collapse show" id="collapse_aside1" style="">
+      <div class="card-body filter-body">
+        <ul class="list-menu">
+          @foreach (var genre in @Model.Genres)
+          {
+            <li><a class="genre-link" data-id="@genre.Id">@genre.Name</a></li>
+          }
+        </ul>
+      </div> <!-- card-body.// -->
+    </div> <!-- collapse.// -->
+  </article> <!-- filter-group // -->
+
+  <article class="filter-group">
+    <header class="card-header filter-header">
+      <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
+        <i class="icon-control fa fa-chevron-down"></i>  Price 
+      </a>
+    </header>
+    <div class="collapse show" id="collapse_aside2">
+      <div class="card-body filter-body">
+        <div class="row mb-3">
+          <div class="col-6">
+            <label for="min" class="form-label">Min</label>
+            <input class="form-control" id="min" placeholder="$0" type="number">
+          </div> <!-- col end.// -->
+
+          <div class="col-6">
+            <label for="max" class="form-label">Max</label>
+            <input class="form-control" id="max" placeholder="$1,0000" type="number">
+          </div> <!-- col end.// -->
+        </div> <!-- row end.// -->
+        <button class="btn btn-light w-100" id="submitPrice" type="button">Apply</button>
+      </div> <!-- card-body.// -->
+    </div> <!-- collapse.// -->
+  </article> <!-- filter-group // -->
+
+</div> <!-- card.// -->
+<!-- ===== Card for sidebar filter .// ===== -->
+
+	</aside> <!-- col .// -->
+	<main class="col-lg-9">
+		
+    <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+      <strong class="d-block py-2"><span id="totalItems"></span> Items found </strong>
+        <div class="ms-auto">
+          <div class="input-group">
+            <div class="form-outline">
+              <input type="search" id="search" class="form-control" />
+              <label class="form-label" for="search">Search</label>
+            </div>
+            <button type="button" id="searchBtn" class="btn btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
+            <button type="button" id="resetBtn" class="btn btn-success ms-2">
+              Reset
+            </button>
+          </div>
+        </div>
+    </header>
+
+    <!-- ========= content items ========= -->
+    <div class="row content-items">
+    </div> <!-- row end.// -->
+
+    <hr>
+    <footer class="d-flex mt-4">
+      <div>
+        <ul class="pagination">
+          <span class="pagination-body">
+          </span>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- ========= content items .// ========= -->
+
+    
+
+	</main> <!-- col .// -->
+</div> <!-- row .// -->
+</div> <!-- container .//  -->
+</section>
+@section Scripts
+{
+  <script src="~/js/shop.js"></script>
+}

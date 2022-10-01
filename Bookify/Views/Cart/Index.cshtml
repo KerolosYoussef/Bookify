@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+@section Styles
+{
+  	<link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
+}
+<div style="background: #fff;height: 100px"></div>
+<section class="h-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h6 class="mb-0 text-muted"><span class="cart-number"></span> items</h6>
+                  </div>
+                  <hr class="my-4">
+                  <div class="cart-item">
+                      <p class="text-muted">There is no items right now!</p>
+                  </div>
+                  <div class="pt-5">
+                    <h6 class="mb-0">
+                      <a asp-controller="Shop" asp-action="Index" class="text-body">
+                        <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-uppercase"><span class="cart-number"></span> items</p>
+                    <p><span class="price"></span> EGP</p>
+                  </div>
+                  <button id="addPromo" class="btn btn-dark" data-mdb-ripple-color="dark">Promo Code</button>
+                  <div class="promo_code mt-2"></div>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between">
+                    <p class="text-uppercase">SubTotal:</p>
+                    <p><span class="price"></span> EGP</p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <p class="text-uppercase">Tax:</p>
+                    <p><span class="tax"></span> EGP</p>
+                  </div>
+                  <div class="d-flex justify-content-between mb-5">
+                    <p class="text-uppercase">Total:</p>
+                    <p><span class="total"></span> EGP</p>
+                  </div>
+
+                  <a asp-controller="Checkout" asp-action="Index" type="button" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">Checkout</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

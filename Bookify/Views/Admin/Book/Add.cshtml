@@ -1,0 +1,111 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model AddBookViewModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Books - Add";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/admin.book.css">
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Books</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-controller="Admin" asp-action="Dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-controller="Book" asp-action="Index">Books</a></li>
+                        <li class="breadcrumb-item active">Add</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Add Book</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <form asp-controller="Book" asp-action="Add" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="Title"></label>
+                                        <input asp-for="Title" class="form-control form-control-lg" aria-required="true"/>
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="Price"></label>
+                                        <input asp-for="Price" class="form-control form-control-lg" aria-required="true"/>
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="NumberOfCopies"></label>
+                                        <input asp-for="NumberOfCopies" class="form-control form-control-lg" aria-required="true"/>
+                                        <span asp-validation-for="NumberOfCopies" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="PublicationDate"></label>
+                                        <input asp-for="PublicationDate" class="form-control form-control-lg" aria-required="true"/>
+                                        <span asp-validation-for="PublicationDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="Image"></label>
+                                        <input asp-for="Image" accept="image/*" class="form-control form-control-lg" style="position:relative" aria-required="true"/>
+                                        <img id="output" class="input-image" />	
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="AuthorId"></label>
+                                        <select asp-for="AuthorId" class="form-control">
+                                            <option value="">Please Select</option>
+                                            @foreach (var author in Model.Authors)
+                                            {
+                                                <option value="@author.Id">@author.FirstName @author.LastName</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="AuthorId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="GenreIds"></label>
+                                        <select asp-for="GenreIds" class="js-example-basic-multiple form-control">
+                                            @foreach (var genre in Model.Genres)
+                                            {
+                                                <option value="@genre.Id">@genre.Name</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="GenreIds" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label asp-for="Description"></label>
+                                        <textarea asp-for="Description" class="form-control form-control-lg"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts
+{
+    <script src="~/js/book.js"></script>
+}
